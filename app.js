@@ -1176,7 +1176,7 @@ function renderBody(d) {
 
   const photo = d.photos.find(p => p.date === selectedDate && p.angle === angle);
   const photoHtml = photo
-    ? `<img src="/api/photos/${photo.filename}">`
+    ? `<img src="${API._baseUrl}/api/photos/${photo.filename}">`
     : '<i class="ph ph-user" style="font-size:48px;color:#3a3a3c;opacity:0.4"></i>';
 
   const angleTabs = angles.map(a =>
@@ -1188,7 +1188,7 @@ function renderBody(d) {
     const thumbPhoto = d.photos.find(p => p.date === m.date && p.angle === 'front');
     const dd = m.date.slice(8, 10) + '.' + m.date.slice(5, 7);
     const inner = thumbPhoto
-      ? `<img src="/api/photos/${thumbPhoto.filename}"><span>${dd}</span>`
+      ? `<img src="${API._baseUrl}/api/photos/${thumbPhoto.filename}"><span>${dd}</span>`
       : `<i class="ph ph-user" style="font-size:16px;opacity:0.15"></i><span>${dd}</span>`;
     return `<div class="thumb ${isActive ? 'active' : ''}" data-date="${m.date}">${inner}</div>`;
   }).join('');
@@ -1276,7 +1276,7 @@ function buildBodyForm(measurement, prev, existingPhotos) {
     const existing = photos.find(p => p.angle === angle);
     if (existing) {
       return `<div class="photo-upload-zone" data-angle="${angle}">
-        <img src="/api/photos/${existing.filename}">
+        <img src="${API._baseUrl}/api/photos/${existing.filename}">
         <button class="photo-delete" data-filename="${existing.filename}" type="button">\u00d7</button>
         <input type="file" accept="image/*" style="display:none" data-angle="${angle}">
       </div>`;
@@ -1423,7 +1423,7 @@ function bindBodyForm(container, measurement) {
       e.stopPropagation();
       const filename = btn.dataset.filename;
       try {
-        await API.del(`/api/photos/${filename}`);
+        await API.del(`${API._baseUrl}/api/photos/${filename}`);
         const zone = btn.closest('.photo-upload-zone');
         zone.querySelector('img')?.remove();
         btn.remove();
@@ -1616,7 +1616,7 @@ function renderCompare(d) {
 
   function photoUrl(date) {
     const p = d.photos.find(ph => ph.date === date && ph.angle === angle);
-    return p ? `/api/photos/${p.filename}` : null;
+    return p ? `${API._baseUrl}/api/photos/${p.filename}` : null;
   }
 
   const angleTabs = angles.map(a =>
