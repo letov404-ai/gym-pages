@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GymTracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="/style.css?v=1774202716">
+</head>
+<body>
+  <div id="app">
+    <div id="screen-container"></div>
+  </div>
+  <nav id="tab-bar">
+    <button class="tab" data-route="home">
+      <i class="ph ph-house"></i>
+      <span>Главная</span>
+    </button>
+    <button class="tab" data-route="nutrition">
+      <i class="ph ph-fork-knife"></i>
+      <span>Питание</span>
+    </button>
+    <button class="tab" data-route="body">
+      <i class="ph ph-person"></i>
+      <span>Тело</span>
+    </button>
+    <button class="tab" data-route="ai">
+      <i class="ph ph-brain"></i>
+      <span>AI</span>
+    </button>
+  </nav>
+<script>
+window.onerror = function(msg, url, line, col) {
+  var el = document.getElementById("screen-container");
+  if (el) el.innerHTML = '<div style="padding:16px;color:red;font-size:11px;word-break:break-all;background:#1a0000;border-radius:8px;margin:16px"><b>JS Error:</b><br>' + msg + '<br>at ' + url.split('/').pop() + ':' + line + ':' + col + '</div>';
+  return false;
+};
+</script>  <script src="/api.js?v=1774202716"></script>
+  <script src="/charts.js?v=1774202716"></script>
+  <script src="/app.js?v=1774202716"></script>
+</body>
+</html>
